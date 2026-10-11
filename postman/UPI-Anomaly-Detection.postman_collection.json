@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "UPI Anomaly Detection API",
+    "description": "Basic requests for the local Spring Boot transaction monitoring API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Submit transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactionId\": \"TXN001\",\n  \"userId\": \"user001\",\n  \"beneficiaryId\": \"merchant001\",\n  \"amount\": 75000,\n  \"timestamp\": \"2026-10-05T10:30:00Z\"\n}"
+        },
+        "url": "{{baseUrl}}/api/transactions"
+      }
+    },
+    {
+      "name": "List transactions",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/transactions"
+      }
+    },
+    {
+      "name": "Get transaction by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/transactions/TXN001"
+      }
+    },
+    {
+      "name": "List alerts",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/alerts"
+      }
+    },
+    {
+      "name": "Get alert by ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/alerts/1"
+      }
+    },
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/dashboard"
+      }
+    },
+    {
+      "name": "Export alerts to Excel",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/alerts/export"
+      }
+    }
+  ]
+}
